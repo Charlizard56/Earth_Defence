@@ -1,7 +1,7 @@
 import Stats
 
 def Missions():
-    if not Stats.In_Mission:
+    if not Stats.resorces.in_mission:
         print(f"\nChoose Mission:")
         Stats.Evacuate.info()
         choice = input()
