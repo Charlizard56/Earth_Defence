@@ -7,32 +7,34 @@ from Save_Load import save
 
 import TimeClock
 
-#TO DO - CHANGE DIRECTORIES
+
 def menu():
     print(f"###############\n"
           f"# TIME: {Stats.Time}:00 ##\n"
           f"###############"
-          f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits:-\n S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount}"
+          f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits:-\n "
+          f"S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount}"
           f" T:-\n"
           f"--------------------------------------")
-    print(f"1. Create  2. Missions  3. Upgrade \n4. Shop  0. Exit  9. Play\nS. Save\n"
+    print(f"1. Create  2. Missions  3. Hires \n4. Shop  0. Exit  9. Play\nS. Save\n"
           "--------------------------------------")
 
     Select = input()
     print(Select)
 
+    #EXIT
     if Select == "0":
         print("Exit")
         Stats.Game = False
-
+    #TRAIN SOLDIERS,HEAVY,& TANKS
     elif Select == "1":
         Create.Train()
-
+    #MISSIONS
     elif Select == "2":
         mission.Missions()
-
+    #HIRE
     elif Select == "3":
-        print("Upgrades: ")
+        print("Hires: ")
         if not Stats.Drill_Sargent:
             print(f" 1. Drill_Sargent (${Stats.Drill_Sargent_Cost})")
             Select = input()
@@ -54,12 +56,14 @@ def menu():
         try:
             x = int(amount)
             while x > 0:
-                if Stats.Unit_Soldiers.process_amount > 0:
-                    #Create
-                    Stats.Unit_Soldiers.process()
                 x -= 1
                 TimeClock.Clock()
                 sleep(1)
+                if Stats.Unit_Soldiers.process_amount > 0:
+                    #Create
+                    Stats.Unit_Soldiers.process()
+                if Stats.resorces.in_mission:
+                    Stats.Evacuate.in_mission()
 
         except:
             print("Try an actual number")

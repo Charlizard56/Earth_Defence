@@ -1,3 +1,5 @@
+import random
+
 import TimeClock
 from time import sleep
 
@@ -56,16 +58,9 @@ class Units:
             print("No orders")
 
     def process(self):
-        total_amount = self.process_amount
-        print(f"Soldiers Created: ({self.process_amount}/{total_amount})")
-        sleep(1)
-        TimeClock.Clock()
-        while self.process_amount > 0:
-            self.amount += 1
-            self.process_amount -= 1
-            sleep(1)
-            print(f"Soldiers Created: ({self.process_amount}/{total_amount})")
-            TimeClock.Clock()
+        print(f"Soldiers Left In Training: {self.process_amount}")
+        self.amount += 1
+        self.process_amount -= 1
 
 
 class Resorces:
@@ -77,7 +72,8 @@ class Resorces:
 
 
 class Missions:
-    def __init__(self, mission_number, name, description, soldiers, heavy, tanks, rations, medical_kits):
+    def __init__(self, mission_number, name, description, soldiers, heavy, tanks, rations, medical_kits, duration,
+                 difficulty, reward):
         self.mission_number = mission_number
         self.name = name
         self.description = description
@@ -86,9 +82,14 @@ class Missions:
         self.tanks = tanks
         self.rations = rations
         self.medical_kits = medical_kits
+        self.duration = duration
+        self.duration_left = duration
+        self.difficulty = difficulty
+        self.reward = reward
 
     def info(self):
-        return print(f"{self.mission_number} {self.name} - {self.description}(S:{self.soldiers},H:,T:,R:,M:)")
+        return print(f"{self.mission_number} {self.name} - {self.description} (S:{self.soldiers},H:,T:,R:,M:) "
+                     f"- Lenght: {self.duration} Hours - Difficulty: {self.difficulty} - ${self.reward}")
 
     def check_amount(self):
         print("Are you sure?(y/n): ")
@@ -106,16 +107,25 @@ class Missions:
     def deploy(self, soldiers, heavy, tanks, rations, medical_kits):
         print(f"Deployed S:{soldiers},H:,T:,R:,M:")
         Unit_Soldiers.amount -= soldiers
+        resorces.in_mission = True
 
-    def success(self, soldiers):
-        if soldiers >= self.soldiers:
-            print("Pass")
+    def in_mission(self):
+        if self.duration_left > 1:
+            self.duration_left -= 1
+            print(f"{self.name} Mission. T-: {self.duration_left}")
         else:
-            print("You don't have enough!")
+            resorces.in_mission = False
+            lost = random.randrange(0, self.difficulty / 10)
+            print(f"\nLoss S:({lost}/{self.soldiers})")
+            Unit_Soldiers.amount += self.soldiers - lost
+            resorces.money += self.reward
+            self.duration_left = self.duration
+            print(f"\nMission Complete - Rewarded ${self.reward}")
+
 
 
 # Resorces
-Money = 10000
+Money = 1000
 Rations = 100
 Med_Kit = 0
 In_Mission = False
@@ -131,7 +141,7 @@ Drill_Sargent_Cost = 1000
 
 # Missions
 In_Mission = False
-Evacuate = Missions("1.", "Evacuation", "Evacuate the citizens", 10, 0, 0, 0, 0)
+Evacuate = Missions("1.", "Evacuation", "Evacuate the citizens", 10, 0, 0, 0, 0, 10, 30, 600)
 
 
 def check(money, cost, amount):

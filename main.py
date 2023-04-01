@@ -13,7 +13,6 @@ while Stats.Game:
     choice = input()
 
     if choice == "1":
-        os.system('cls')
         print("New Game")
         Play_Game()
     elif choice == "2":
@@ -25,5 +24,3 @@ while Stats.Game:
         break
     else:
         print("Pick an option")
-
-    os.system('cls')
