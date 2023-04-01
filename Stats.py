@@ -20,7 +20,7 @@ class Units:
             print("How many? ")
             amount = input()
             try:
-                if check(money, self.cost, amount):
+                if check(resorces.money, self.cost, amount):
                     self.process_amount = self.process_amount + int(amount)
             except:
                 print("Try an actual number...")
@@ -134,6 +134,7 @@ Evacuate = Missions("1.", "Evacuation", "Evacuate the citizens", 10, 0, 0, 0, 0)
 
 
 def check(money, cost, amount):
+    print(f"-${cost * int(amount)}")
     if money >= cost * int(amount):
         resorces.money -= cost * int(amount)
         return True

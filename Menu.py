@@ -35,8 +35,8 @@ def menu():
             print(f" 1. Drill_Sargent (${Stats.Drill_Sargent_Cost})")
             Select = input()
             if Select == "1":
-                if Stats.Money >= Stats.Drill_Sargent_Cost:
-                    Stats.Money -= Stats.Drill_Sargent_Cost
+                if Stats.resorces.money >= Stats.Drill_Sargent_Cost:
+                    Stats.resorces.money -= Stats.Drill_Sargent_Cost
                     Stats.Drill_Sargent = True
                     print("Bought Drill_Sargent!")
                 else:
