@@ -24,6 +24,7 @@ class Units:
             try:
                 if check(resorces.money, self.cost, amount):
                     self.process_amount = self.process_amount + int(amount)
+
             except:
                 print("Try an actual number...")
         # BUY INDIVIDUAL
