@@ -9,12 +9,14 @@ import TimeClock
 
 #TO DO - CHANGE DIRECTORIES
 def menu():
-    print(f"# TIME: {Stats.Time}:00 "
-          f"########################"
-          f"\n Money:${Stats.resorces.money} Rations: {Stats.resorces.rations} Soldiers:{Stats.Unit_Soldiers.amount}\n Drill Sargent:{Stats.Drill_Sargent}\n"
-          f"######################################")
-    print(f"#1. Create # 2. Missions # 3. Upgrade# \n#4. Shop # 0. Exit # 9. Play#\nS. Save\n"
-          "######################################")
+    print(f"###############\n"
+          f"# TIME: {Stats.Time}:00 ##\n"
+          f"###############"
+          f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits:-\n S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount}"
+          f" T:-\n"
+          f"--------------------------------------")
+    print(f"1. Create  2. Missions  3. Upgrade \n4. Shop  0. Exit  9. Play\nS. Save\n"
+          "--------------------------------------")
 
     Select = input()
     print(Select)

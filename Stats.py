@@ -123,6 +123,7 @@ resorces = Resorces(Money, Rations, Med_Kit, In_Mission)
 
 # Troops
 Unit_Soldiers = Units("Soldiers", 0, 100, 1, 0)
+Unit_Heavy = Units("Heavy", 0, 200, 2, 0)
 
 # Upgrades
 Drill_Sargent = False
