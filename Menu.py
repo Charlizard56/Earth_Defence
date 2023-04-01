@@ -60,8 +60,9 @@ def menu():
                 TimeClock.Clock()
                 sleep(1)
                 if Stats.Unit_Soldiers.process_amount > 0:
-                    #Create
                     Stats.Unit_Soldiers.process()
+                if Stats.Unit_Heavy.process_amount > 0:
+                    Stats.Unit_Heavy.process()
                 if Stats.resorces.in_mission:
                     Stats.Evacuate.in_mission()
 
