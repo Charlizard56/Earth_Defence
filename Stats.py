@@ -28,7 +28,7 @@ class Units:
                 print("Try an actual number...")
         # BUY INDIVIDUAL
         else:
-            if check(money, self.cost, 1):
+            if check(resorces.money, self.cost, 1):
                 self.amount += 1
                 print(f"\nBought 1 {self.name}")
                 TimeClock.Clock()
