@@ -15,6 +15,7 @@ class Units:
         self.amount = amount
         self.cost = cost
         self.process_time = process_time
+        self.process_time_left = process_time
         self.process_amount = process_amount
 
     def buy(self, money):
@@ -59,9 +60,13 @@ class Units:
             print("No orders")
 
     def process(self):
+        if self.process_time_left <= 0:
+            self.amount += 1
+            self.process_amount -= 1
+            self.process_time_left = self.process_time
+        else:
+            self.process_time_left -= 1
         print(f"Soldiers Left In Training: {self.process_amount}")
-        self.amount += 1
-        self.process_amount -= 1
 
 
 class Resorces:
@@ -126,15 +131,16 @@ class Missions:
 
 
 # Resorces
-Money = 1000
+Money = 10000
 Rations = 100
 Med_Kit = 0
 In_Mission = False
 resorces = Resorces(Money, Rations, Med_Kit, In_Mission)
 
 # Troops
-Unit_Soldiers = Units("Soldiers", 0, 100, 1, 0)
+Unit_Soldiers = Units("Soldiers", 0, 100, 0, 0)
 Unit_Heavy = Units("Heavy", 0, 200, 2, 0)
+Unit_Tanks = Units("Tank", 0, 500, 3, 0)
 
 # Upgrades
 Drill_Sargent = False
