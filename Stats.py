@@ -33,7 +33,13 @@ class Units:
             if check(resorces.money, self.cost, 1):
                 self.amount += 1
                 print(f"\nBought 1 {self.name}")
-                TimeClock.Clock()
+                while self.process_time_left > 0:
+                    TimeClock.Clock()
+                    self.process_time_left -= 1
+                    sleep(1)
+                self.process_time_left = self.process_time
+
+
 
     def sell(self):
         if self.amount > 0:
@@ -44,7 +50,7 @@ class Units:
                 print(total)
                 resorces.money += total
                 self.amount -= int(x)
-                print(f"{x} Soldiers Sold for {total}")
+                print(f"{x} {self.name}(s) Sold for {total}")
             else:
                 print(f"You don't have that many {self.name}")
 
@@ -66,7 +72,7 @@ class Units:
             self.process_time_left = self.process_time
         else:
             self.process_time_left -= 1
-        print(f"Soldiers Left In Training: {self.process_amount}")
+        print(f"{self.name}(s) Left In Training: {self.process_amount}")
 
 
 class Resorces:
@@ -138,7 +144,7 @@ In_Mission = False
 resorces = Resorces(Money, Rations, Med_Kit, In_Mission)
 
 # Troops
-Unit_Soldiers = Units("Soldiers", 0, 100, 0, 0)
+Unit_Soldiers = Units("Soldiers", 0, 100, 1, 0)
 Unit_Heavy = Units("Heavy", 0, 200, 2, 0)
 Unit_Tanks = Units("Tank", 0, 500, 3, 0)
 
