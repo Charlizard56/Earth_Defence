@@ -3,8 +3,9 @@ import Stats
 def Clock():
     if Stats.Time == 23:
         Stats.Time = 0
-        print(f"It's a new day! (Rations: {Stats.resorces.rations} > {Stats.resorces.rations - Stats.Unit_Soldiers.amount})")
-        Stats.resorces.rations -= Stats.Unit_Soldiers.amount
+        #x = Stats.Unit_Soldiers.amount - Stats.Unit_Heavy.amount - Stats.Unit_Tanks.amount
+        #print(f"It's a new day! (Rations: {Stats.resorces.rations} > {Stats.resorces.rations + x})")
+        #Stats.resorces.rations += x
     else:
         Stats.Time += 1
     if Stats.resorces.rations <= 0:

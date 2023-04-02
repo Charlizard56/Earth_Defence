@@ -13,8 +13,7 @@ def menu():
           f"# TIME: {Stats.Time}:00 ##\n"
           f"###############"
           f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits:-\n "
-          f"S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount}"
-          f" T:-\n"
+          f"S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount} T:{Stats.Unit_Tanks.amount}\n"
           f"--------------------------------------")
     print(f"1. Create  2. Missions  3. Hires \n4. Shop  0. Exit  9. Play\nS. Save\n"
           "--------------------------------------")
@@ -59,10 +58,16 @@ def menu():
                 x -= 1
                 TimeClock.Clock()
                 sleep(1)
+                #Soldier
                 if Stats.Unit_Soldiers.process_amount > 0:
                     Stats.Unit_Soldiers.process()
+                #Heavy Unit
                 if Stats.Unit_Heavy.process_amount > 0:
                     Stats.Unit_Heavy.process()
+                #Tanks
+                if Stats.Unit_Tanks.process_amount > 0:
+                    Stats.Unit_Tanks.process()
+                #Mission
                 if Stats.resorces.in_mission:
                     Stats.Evacuate.in_mission()
 
