@@ -158,7 +158,7 @@ class Missions:
 
 # Resorces
 Money = 10000
-Rations = 100
+Rations = 0
 Med_Kit = 5
 In_Mission = False
 resorces = Resorces(Money, Rations, Med_Kit, In_Mission)
