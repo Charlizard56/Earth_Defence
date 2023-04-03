@@ -79,8 +79,28 @@ class Resorces:
     def __init__(self, money, rations, med_kit, in_mission):
         self.money = money
         self.rations = rations
+        self.ration_price = 10
         self.med_kit = med_kit
+        self.med_kit_price = 50
         self.in_mission = in_mission
+
+    def buy_med_kit(self):
+        print(f"How many?({self.med_kit}): ")
+        amount = input()
+        if check(self.money,self.med_kit_price,amount):
+            print(f"Bought {amount} Med-Kit(s)")
+            self.med_kit += int(amount)
+        else:
+            print("Not enough money")
+
+    def buy_rations(self):
+        print(f"How many?({self.rations}): ")
+        amount = input()
+        if check(self.money,self.ration_price,amount):
+            print(f"Bought {amount} Ration(s)")
+            self.rations += int(amount)
+        else:
+            print("Not enough money")
 
 
 class Missions:
@@ -139,7 +159,7 @@ class Missions:
 # Resorces
 Money = 10000
 Rations = 100
-Med_Kit = 0
+Med_Kit = 5
 In_Mission = False
 resorces = Resorces(Money, Rations, Med_Kit, In_Mission)
 

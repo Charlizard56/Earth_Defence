@@ -10,7 +10,7 @@ def save():
         x = 0
     file2write.write(f"Money:{str(Stats.resorces.money)} Rations:{str(Stats.resorces.rations)} "
                      f"Soldiers:{str(Stats.Unit_Soldiers.amount)} Drill_Sargent:{x} Time:{Stats.Time} "
-                     f"Heavy:{str(Stats.Unit_Heavy.amount)} end")
+                     f"Heavy:{str(Stats.Unit_Heavy.amount)} Med-Kit:{str(Stats.resorces.med_kit)} end")
     file2write.close()
 
 def load():
@@ -45,6 +45,7 @@ def load():
     Stats.Drill_Sargent = bool(Stats.Drill_Sargent)
     Stats.Time = int(list[4])
     Stats.Unit_Heavy.amount = int(list[5])
-    print(Stats.Drill_Sargent)
+    Stats.resorces.med_kit = int(list[6])
+    print(f"Drill Sargent: {Stats.Drill_Sargent}")
     print(type(Stats.Drill_Sargent))
 

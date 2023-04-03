@@ -12,7 +12,7 @@ def menu():
     print(f"###############\n"
           f"# TIME: {Stats.Time}:00 ##\n"
           f"###############"
-          f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits:-\n "
+          f"\n\nMoney:${Stats.resorces.money} Rations: {Stats.resorces.rations} Med-Kits: {Stats.resorces.med_kit}\n "
           f"S:{Stats.Unit_Soldiers.amount} H:{Stats.Unit_Heavy.amount} T:{Stats.Unit_Tanks.amount}\n"
           f"--------------------------------------")
     print(f"1. Create  2. Missions  3. Hires \n4. Shop  0. Exit  9. Play\nS. Save\n"
@@ -47,6 +47,9 @@ def menu():
         else:
             print("Drill Sargent already bought")
 
+    #Shop
+    elif Select == "4":
+        Create.shop()
 
     elif Select == "9":
         print("Pass Time: ")

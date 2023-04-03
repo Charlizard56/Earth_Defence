@@ -5,7 +5,7 @@ def Train():
           f"\n2. Heavy(Now: {Stats.Unit_Heavy.amount})(To be trained: {Stats.Unit_Heavy.process_amount})\n"
           f"3. Tank(Now: {Stats.Unit_Tanks.amount})(To be trained: {Stats.Unit_Tanks.process_amount})\n")
     choice = input()
-    #Soldiers
+    #Create
     if choice == "1":
         print("\n1. Buy 2.Sell 3.Cancel")
         choice = input()
@@ -36,3 +36,12 @@ def Train():
             Stats.Unit_Tanks.sell()
         if choice == "3":
             Stats.Unit_Tanks.cancel()
+
+def shop():
+    print("SHOP\n")
+    print(f"1. Rations(Now: {Stats.resorces.rations})\n2. Med-Kits(Now: {Stats.resorces.med_kit})")
+    choice = input()
+    if choice == "1":
+        Stats.resorces.buy_rations()
+    elif choice == "2":
+        Stats.resorces.buy_med_kit()
